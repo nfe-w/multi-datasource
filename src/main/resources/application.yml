@@ -1,0 +1,44 @@
+server:
+  port: 8234
+  servlet:
+    context-path: /multi-datasource
+  tomcat:
+    uri-encoding: utf-8
+    max-connections: 10000
+    connection-timeout: 20000
+
+spring:
+  datasource:
+    druid:
+      main:
+        url: jdbc:mysql://ip:port/db?useOldAliasMetadataBehavior=true&serverTimezone=Asia/Shanghai&allowMultiQueries=true
+        username: user
+        password: password
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        initial-size: 5
+        max-active: 20
+        min-idle: 5
+        max-wait: 60000
+      db2:
+        url: jdbc:mysql://ip:port/db2?useOldAliasMetadataBehavior=true&serverTimezone=Asia/Shanghai&allowMultiQueries=true
+        username: user
+        password: password
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        initial-size: 5
+        max-active: 20
+        min-idle: 5
+        max-wait: 60000
+      db3:
+        url: jdbc:oracle:thin:@ip:port:orcl
+        username: user
+        password: password
+        driver-class-name: oracle.jdbc.OracleDriver
+        initial-size: 5
+        max-active: 20
+        min-idle: 5
+        max-wait: 60000
+
+logging:
+  level:
+    root: info
+    com.nfe.multidatasource: debug
